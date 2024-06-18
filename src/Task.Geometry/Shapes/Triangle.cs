@@ -1,10 +1,9 @@
-﻿using System;
-using Task.Geometry.Abstractions;
+﻿using Task.Geometry.Abstractions;
 using Task.Geometry.Extentions;
 
 namespace Task.Geometry.Shapes;
 
-public class Triangle : IShape
+public class Triangle : Shape
 {
     public Triangle(double a, double b, double c)
     {
@@ -49,15 +48,12 @@ public class Triangle : IShape
         return Math.Pow(leg1, 2) + Math.Pow(leg2, 2) == Math.Pow(hypotenuse, 2);
     }
 
-    public double GetArea()
+    public override double GetArea()
     {
         var p = GetPerimeter() / 2;
 
         return Math.Sqrt(p * (p - A) * (p - B) * (p - C));
     }
 
-    public double GetPerimeter()
-    {
-        return A + B + C;
-    }
+    public override double GetPerimeter() => A + B + C;
 }
